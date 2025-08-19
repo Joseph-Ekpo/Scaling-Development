@@ -1,5 +1,3 @@
-# Leet Code 1: Two Sum
-
 # Task: Build a Car class with attributes (make, model) and method drive().
 from lorem_text import lorem
 import time
@@ -13,7 +11,7 @@ class Car:
         self.parked = True
     
     def __str__(self):
-        return f"Make: {self.make}\nModel: {self.model}\n Fuel: {self.fuel_capacity} gallons\nParked: {self.parked}"
+        return f"Make: {self.make}\nModel: {self.model}\nFuel: {self.fuel_capacity} gallons\nParked: {self.parked}"
     
     def drive(self, location):
         if self.parked:
@@ -23,7 +21,7 @@ class Car:
             print(f"Driving to: {location}. Consuming 1 fuel")
             self.fuel_capacity -= 1
             time.sleep(1)
-            print(f"Arrived and parked at{location}..")
+            print(f"Arrived and parked at {location}..")
             self.parked = True
         return self.parked
 
@@ -36,8 +34,8 @@ class Car:
         return f"{self.model} {self.make} is ready to rock-n-roll"
     
     def honk_horn(self):
-        # noise = lorem.words(amount) if amount >= 10 else lorem.sentence(amount)
-        noise = lorem.words(5)
+        banter = "Can't you see I'm driving here!"
+        noise = f"{lorem.words(5)}... " + banter
         return noise
 
 
@@ -50,6 +48,4 @@ honda.drive("Los Angeles, CA")
 print(honda, "\n")
 
 
-honda.honk_horn()
-
-
+print(honda.honk_horn())
