@@ -16,3 +16,19 @@
 # Generators exhaust themselves after being iterated over fully.
 # You will still need the sum() function.
 
+
+# Mini Task
+# Build a generator even_numbers(n) yielding up to n
+
+class EvenYield:
+
+    def __init__(self):
+        pass
+
+
+    def even_numbers(self, n):
+        pass
+
+
+new_yielder = EvenYield()
+print(new_yielder.even_numbers(10))
