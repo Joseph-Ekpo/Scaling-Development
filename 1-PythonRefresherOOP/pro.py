@@ -70,97 +70,103 @@ class CheckValidity:
         self.pattern = list(pattern)
     
     def check_pattern(self):
-        isValid = False
+        balanced = False
 
         # I will implement a stack using a list to check if the 'open' element has been 'closed'
         validator_stack = []
 
-        # Check if we are starting with a valid sequence ie have we encountered an opening that needs closing: ( { [
-        isOpen = False
+        # Counter for the number of elements currently open
+        checked = len(self.pattern)
 
-        if len(self.pattern) < 2:
-            return False
+        if len(self.pattern) == 0:
+            balanced = True
+        elif len(self.pattern) % 2 > 0:
+            balanced = False
         elif self.pattern[0] in self.close_flags:
-            return False
+            balanced = False
             # isOpen = self.pattern[0] in self.open_flags
             # print('open detected' if self.pattern[0] in self.open_flags else 'started closed')
         else:
-            isOpen = True
             # {}(){}
-            # {({})}
+            # { ( { } ) }
+
+            # 
+            # 
+            # 
     
             for i in range(len(self.pattern)):
                 if self.pattern[i] not in self.close_flags:
                     validator_stack.append(self.pattern[i])
+                    checked -= 1
+                elif len(validator_stack) > 0 and checked > 0:
+                        if validator_stack.pop() == self.close_flags[self.pattern[i]]:
+                             checked -= 1
                 else:
-                    if validator_stack.pop() != self.close_flags[self.pattern[i]]:
-                        return False
-                
-            
-
+                    balanced = checked == 0
+                    
         
         
         # At the end of iteration, the validator stack should be closed 
         # because there are no more open flags to close
 
-        return len(validator_stack) == 0
+        return balanced
     
-# q1 = CheckValidity(r"()")
-# print(f"{q1.check_pattern()}\t{True}")
+q1 = CheckValidity(r"()")
+print(f"1 {q1.check_pattern()}\t{True}")
 
-# q2 = CheckValidity(r"(())")
-# print(f"{q2.check_pattern()}\t{True}")
+q2 = CheckValidity(r"(())")
+print(f"2 {q2.check_pattern()}\t{True}")
 
-# q3 = CheckValidity(r"(()")
-# print(f"{q3.check_pattern()}\t{False}")
+q3 = CheckValidity(r"(()")
+print(f"3 {q3.check_pattern()}\t{False}")
 
-# q4 = CheckValidity(r")(")
-# print(f"{q4.check_pattern()}\t{False}")
+q4 = CheckValidity(r")(")
+print(f"4 {q4.check_pattern()}\t{False}")
 
-# q5 = CheckValidity(r"((()))")
-# print(f"{q5.check_pattern()}\t{True}")
+q5 = CheckValidity(r"((()))")
+print(f"5 {q5.check_pattern()}\t{True}")
 
-# q6 = CheckValidity(r"(()())")
-# print(f"{q6.check_pattern()}\t{True}")
+q6 = CheckValidity(r"(()())")
+print(f"6 {q6.check_pattern()}\t{True}")
 
 q7 = CheckValidity(r"())(")
-print(f"{q7.check_pattern()}\t{False}")
+print(f"7 {q7.check_pattern()}\t{False}")
 
-# q8 = CheckValidity(r"((())")
-# print(f"{q8.check_pattern()}\t{False}")
+q8 = CheckValidity(r"((())")
+print(f"8 {q8.check_pattern()}\t{False}")
 
-# q9 = CheckValidity(r"()()()")
-# print(f"{q9.check_pattern()}\t{True}")
+q9 = CheckValidity(r"()()()")
+print(f"9 {q9.check_pattern()}\t{True}")
 
-# q10 = CheckValidity(r"(())()")
-# print(f"{q10.check_pattern()}\t{True}")
+q10 = CheckValidity(r"(())()")
+print(f"10 {q10.check_pattern()}\t{True}")
 
-# q11 = CheckValidity(r"(()))")
-# print(f"{q11.check_pattern()}\t{False}")
+q11 = CheckValidity(r"(()))")
+print(f"11 {q11.check_pattern()}\t{False}")
 
-# q12 = CheckValidity(r"((()()))")
-# print(f"{q12.check_pattern()}\t{True}")
+q12 = CheckValidity(r"((()()))")
+print(f"12 {q12.check_pattern()}\t{True}")
 
-# q13 = CheckValidity(r"((()())")
-# print(f"{q13.check_pattern()}\t{False}")
+q13 = CheckValidity(r"((()())")
+print(f"13 {q13.check_pattern()}\t{False}")
 
-# q14 = CheckValidity(r")()(")
-# print(f"{q14.check_pattern()}\t{False}")
+q14 = CheckValidity(r")()(")
+print(f"14 {q14.check_pattern()}\t{False}")
 
-# q15 = CheckValidity(r"((((()))))")
-# print(f"{q15.check_pattern()}\t{True}")
+q15 = CheckValidity(r"((((()))))")
+print(f"15 {q15.check_pattern()}\t{True}")
 
-# q16 = CheckValidity(r"(()(()))")
-# print(f"{q16.check_pattern()}\t{True}")
+q16 = CheckValidity(r"(()(()))")
+print(f"16 {q16.check_pattern()}\t{True}")
 
-# q17 = CheckValidity(r"()(()")
-# print(f"{q17.check_pattern()}\t{False}")
+q17 = CheckValidity(r"()(()")
+print(f"17 {q17.check_pattern()}\t{False}")
 
-# q18 = CheckValidity(r"")
-# print(f"{q18.check_pattern()}\t{True}")  # empty string is balanced
+q18 = CheckValidity(r"")
+print(f"18 {q18.check_pattern()}\t{True}")  # empty string is balanced
 
-# q19 = CheckValidity(r"())")
-# print(f"{q19.check_pattern()}\t{False}")
+q19 = CheckValidity(r"())")
+print(f"19 {q19.check_pattern()}\t{False}")
 
-# q20 = CheckValidity(r"((())())")
-# print(f"{q20.check_pattern()}\t{True}")
+q20 = CheckValidity(r"((())())")
+print(f"20 {q20.check_pattern()}\t{True}")
