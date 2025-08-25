@@ -25,7 +25,6 @@ class CountLetters:
 
 media_tool1 = CountLetters()
 # print(media_tool1.count_letters("Joseph Ekpo"))
-media_tool1 = CountLetters()
 
 print(f"String: k+.6hH,98D\"Mk., My count: {media_tool1.count_letters('k+.6hH,98D\"Mk.')}\nCorrectAnswer: 3\n")
 print(f"String: {{+@^\", My count: {media_tool1.count_letters('{+@^\"')}\nCorrectAnswer: 0\n")
