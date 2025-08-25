@@ -70,46 +70,32 @@ class CheckValidity:
         self.pattern = list(pattern)
     
     def check_pattern(self):
-        balanced = False
 
         # I will implement a stack using a list to check if the 'open' element has been 'closed'
         validator_stack = []
 
-        # Counter for the number of elements currently open
-        checked = len(self.pattern)
-
+        # Empty strings are already balanced
         if len(self.pattern) == 0:
-            balanced = True
-        elif len(self.pattern) % 2 > 0:
-            balanced = False
-        elif self.pattern[0] in self.close_flags:
-            balanced = False
-            # isOpen = self.pattern[0] in self.open_flags
-            # print('open detected' if self.pattern[0] in self.open_flags else 'started closed')
+            return True
+        elif len(self.pattern) % 2 > 0: #Strings with uneven number of characters cannot possibly be balanced
+            return False
+        elif self.pattern[0] in self.close_flags: # String starting with a close flag }]) cannot possibly be balanced.
+            return False
         else:
-            # {}(){}
-            # { ( { } ) }
-
-            # 
-            # 
-            # 
     
             for i in range(len(self.pattern)):
                 if self.pattern[i] not in self.close_flags:
                     validator_stack.append(self.pattern[i])
-                    checked -= 1
-                elif len(validator_stack) > 0 and checked > 0:
-                        if validator_stack.pop() == self.close_flags[self.pattern[i]]:
-                             checked -= 1
+                elif validator_stack:
+                    if validator_stack.pop() != self.close_flags[self.pattern[i]]:
+                        return False
                 else:
-                    balanced = checked == 0
-                    
-        
+                    return False
         
         # At the end of iteration, the validator stack should be closed 
         # because there are no more open flags to close
 
-        return balanced
+        return len(validator_stack) == 0
     
 q1 = CheckValidity(r"()")
 print(f"1 {q1.check_pattern()}\t{True}")
