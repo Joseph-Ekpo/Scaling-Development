@@ -26,13 +26,22 @@ class CountLetters:
 media_tool1 = CountLetters()
 # print(media_tool1.count_letters("Joseph Ekpo"))
 
-print(f"String: k+.6hH,98D\"Mk., My count: {media_tool1.count_letters('k+.6hH,98D\"Mk.')}\nCorrectAnswer: 3\n")
-print(f"String: {{+@^\", My count: {media_tool1.count_letters('{+@^\"')}\nCorrectAnswer: 0\n")
-print(f"String: 0N:#pj*, My count: {media_tool1.count_letters('0N:#pj*')}\nCorrectAnswer: 3\n")
-print(f"String: [jj%ne<(, My count: {media_tool1.count_letters('[jj%ne<(')}\nCorrectAnswer: 4\n")
-print(f"String: G}}r)^aJf`/4Q, My count: {media_tool1.count_letters('G}r)^aJf`/4Q')}\nCorrectAnswer: 6\n")
-print(f"String: %h a+, My count: {media_tool1.count_letters('%h a+')}\nCorrectAnswer: 2\n")
-print(f"String: 5)?MW, My count: {media_tool1.count_letters('5)?MW')}\nCorrectAnswer: 2\n")
-print(f"String: q`(z|IB2Vci, My count: {media_tool1.count_letters('q`(z|IB2Vci')}\nCorrectAnswer: 6\n")
+# print(f"String: k+.6hH,98D\"Mk., My count: {media_tool1.count_letters('k+.6hH,98D\"Mk.')}\nCorrectAnswer: 3\n")
+# print(f"String: {{+@^\", My count: {media_tool1.count_letters('{+@^\"')}\nCorrectAnswer: 0\n")
+# print(f"String: 0N:#pj*, My count: {media_tool1.count_letters('0N:#pj*')}\nCorrectAnswer: 3\n")
+# print(f"String: [jj%ne<(, My count: {media_tool1.count_letters('[jj%ne<(')}\nCorrectAnswer: 4\n")
+# print(f"String: G}}r)^aJf`/4Q, My count: {media_tool1.count_letters('G}r)^aJf`/4Q')}\nCorrectAnswer: 6\n")
+# print(f"String: %h a+, My count: {media_tool1.count_letters('%h a+')}\nCorrectAnswer: 2\n")
+# print(f"String: 5)?MW, My count: {media_tool1.count_letters('5)?MW')}\nCorrectAnswer: 2\n")
+# print(f"String: q`(z|IB2Vci, My count: {media_tool1.count_letters('q`(z|IB2Vci')}\nCorrectAnswer: 6\n")
 
 
+#  Task: Merge two dictionaries into one
+dict_uno = {'Ten': 10, 'Twenty': 20, 'Thirty': 30}
+dict_dos = {'Thirty': 30, 'Fourty': 40, 'Fifty': 50}
+
+def merge_dicts(dict1, dict2):
+    v1 = dict_uno | dict_dos
+    return v1
+
+print(merge_dicts(dict1=dict_uno, dict2=dict_dos))
