@@ -91,7 +91,17 @@ class Vector:
         for j in range(len(self)):
             result[j] = self[j] + other[j]
         
+        
         return result
+    
+    # R-2.11
+        # However, the syntax v = [5, 3, 10, −2, 1] + u is illegal.
+        # Explain how the Vector class definition can be revised so that this syntax
+        # generates a new vector.
+
+        # The __radd__ special method can be overloaded to account for operands on the right
+    def __radd__(self, other):
+            return self.__add__(other)
     
 
     def __sub__(self, other):
@@ -118,4 +128,8 @@ print(f"Vector V: {v}")
 print()
 print(f"Vector U + V = {u + v}")
 print(f"Vector U - V = {u - v}")
+print()
+print(f"Vector U + [5, 10, 15, 20] = {u + [5, 10, 15, 20]}")
+
+# print(type(u))
 
