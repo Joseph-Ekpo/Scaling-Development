@@ -94,6 +94,19 @@ class Vector:
         
         return result
     
+#   R-2.9 Implement the sub method for the Vector class of Section 2.3.3, so
+#   that the expression u−v returns a new vector instance representing the
+#   difference between two vectors
+    def __sub__(self, other):
+        if len(self) != len(other):
+            raise ValueError('dimensions must agree')
+        result = Vector(len(self))
+
+        for i in range(len(self)):
+            result[i] = self[i] - other[i]
+        
+        return result
+    
     # R-2.11
         # However, the syntax v = [5, 3, 10, −2, 1] + u is illegal.
         # Explain how the Vector class definition can be revised so that this syntax
@@ -104,15 +117,22 @@ class Vector:
             return self.__add__(other)
     
 
-    def __sub__(self, other):
-        if len(self) != len(other):
-            raise ValueError('dimensions must agree')
+    # R-2.12 Implement the mul method for the Vector class of Section 2.3.3, so
+    # that the expression v * 3 returns a new vector with coordinates that are 3
+    # times the respective coordinates of v.
+    def __mul__(self, factor):
         result = Vector(len(self))
-
         for i in range(len(self)):
-            result[i] = self[i] - other[i]
-        
+            result[i] = self.coords[i] * 3
+
         return result
+
+    # R-2.13 Exercise R-2.12 asks for an implementation of mul , for the Vector
+    # class of Section 2.3.3, to provide support for the syntax v 3. Implement
+    # the rmul method, to provide additional support for syntax 3 v
+    def __rmul__(self, other):
+        return self.__mul__(other)
+
  
 
 u = Vector(4)
@@ -130,6 +150,9 @@ print(f"Vector U + V = {u + v}")
 print(f"Vector U - V = {u - v}")
 print()
 print(f"Vector U + [5, 10, 15, 20] = {u + [5, 10, 15, 20]}")
+print()
+print(f"Vector U * V: {u * v}")
+print(f"Vector 3 * V: {3 * v}")
 
 # print(type(u))
 
