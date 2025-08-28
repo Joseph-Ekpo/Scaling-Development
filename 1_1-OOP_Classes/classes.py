@@ -153,6 +153,7 @@ print(f"Vector U + [5, 10, 15, 20] = {u + [5, 10, 15, 20]}")
 print()
 print(f"Vector U * V: {u * v}")
 print(f"Vector 3 * V: {3 * v}")
+print(f"Vector 4 * V: {4 * v}")
 
 # print(type(u))
 
