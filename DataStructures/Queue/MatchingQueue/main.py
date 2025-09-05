@@ -19,4 +19,15 @@ from queue import Queue
 
 
 def matchmake(queue, user):
-    pass
+    nmf = "No match found"
+    user_name, user_action = user[0], user[1]
+    
+    if user_action == 'leave':
+        queue.search_and_remove(user_name)
+    elif user_action == 'join':
+        queue.push(user_name)
+        if queue.size() >= 4:
+            match = f"{queue.pop()} matched {queue.pop()}!"
+            return match
+
+    return nmf
