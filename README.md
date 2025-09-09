@@ -1,2 +1,2 @@
 # Scaling-Development
-Collection of projects and learning material starting from the basics. 
+Collection of projects and topics showcasing Data Structures & Algorithms.
